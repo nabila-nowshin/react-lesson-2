@@ -35,8 +35,21 @@
 
 .card {
   padding: 2em;
+ 
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.content{
+  border: 2px solid red;
+  margin: 10px;
+  padding: 10px 261px;
+}
+
+.small-card{
+  border: 2px solid blue;
+  margin: 10px;
+  padding: 5px 30px;
 }
