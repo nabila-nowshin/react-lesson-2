@@ -2,7 +2,7 @@ import Counter from './counter'
 import './App.css'
 import Player from './player'
 import Users from './users'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import Friends from './friends'
 
 const fetchUsers=fetch('https://jsonplaceholder.typicode.com/users')
@@ -13,8 +13,37 @@ const fetchFriends=async()=>{
   return res2.json()
 }
 
+
 function App() {
  const friendPromise=fetchFriends();
+
+ let [count,setCount]=useState(0)
+ let [text,setText]=useState('Hello,React')
+const addOne=()=>{
+  count+=1;
+  setCount(count);
+}
+
+const subOne=()=>{
+  count-=1;
+  setCount(count);
+}
+
+const reset=()=>{
+  count=0;
+  setCount(count);
+}
+
+const change=()=>{
+  if(text.length !=0){
+    let newText='';
+    setText(newText);
+  }
+  else{
+    setText('Hello, React');
+  }
+ 
+}
 
   return (
     <>
@@ -35,6 +64,21 @@ function App() {
       <Suspense fallback={<h2>Friends are waiting....</h2>}>
         <Friends fetchFriends={friendPromise}></Friends>
       </Suspense>
+
+
+
+      {/* oweworks */}
+      <div>
+       <h2>Count :{count}</h2> 
+       <button onClick={addOne}>+1</button>
+       <button onClick={subOne}>-1</button>
+       <button onClick={reset}>Reset</button>
+      </div>
+
+      <div>
+       <h2>{text}</h2> 
+       <button onClick={change}>Toggle</button>
+      </div>
     </>
   )
 }

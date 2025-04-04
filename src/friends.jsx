@@ -3,7 +3,7 @@ import Friend from "./friend";
 
 function Friends({fetchFriends}) {
     let friendsData=use(fetchFriends);
-    console.log(friendsData)
+    // console.log(friendsData)
     return ( 
         <div>
             <h3>Friends :{friendsData.length}</h3>
